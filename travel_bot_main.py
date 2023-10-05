@@ -106,7 +106,6 @@ def send_city_info(message, city):
         bot.send_message(message.chat.id, "Выберите количество дней:", reply_markup=markup)
     else:
         bot.send_message(message.chat.id, "Информации о данном городе нет в базе данных. Попробуйте другой город.")
-        # start(message)
         user_city_selection.pop(message.from_user.id)
 
 
@@ -133,15 +132,9 @@ def start(message):
 def handle_days_selection(message):
     if message.from_user.id not in user_city_selection:
         bot.send_message(message.chat.id, "Сначала выберите город.")
-        # start(message)
         return
 
     user_data = user_city_selection[message.from_user.id]
-
-    # if user_data["city"] == "":
-    #     bot.send_message(message.chat.id, "Сначала выберите город.")
-    #     start(message)
-    #     return
 
     need_count_days = '0'
     for key, value_list in count_days_dict.items():
