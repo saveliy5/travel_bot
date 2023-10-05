@@ -10,7 +10,7 @@ base_dir = os.path.abspath(os.path.dirname(__file__))
 DB_PATH = os.path.join(base_dir, 'travel_bot.db')
 
 # Установите токен вашего бота
-TOKEN = ''
+TOKEN = '12'
 HOTEL_LINK = 'https://tp.st/TZA2MJW4'
 AIRPLANE_LINK = 'https://aviasales.tp.st/C9qeS4te'
 TOUR_LINK = 'https://travelata.tp.st/3U2N1QA4'
