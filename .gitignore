@@ -1,1 +1,7 @@
 config.json
+**.csv
+**.xlsx
+**.db
+database.py
+chatgpt.py
+check_excel.py
