@@ -3,17 +3,23 @@ from telebot import types
 import sqlite3
 from datetime import datetime, timedelta
 import os
+import json
 
 
 # Получите абсолютный путь к текущей директории
 base_dir = os.path.abspath(os.path.dirname(__file__))
 DB_PATH = os.path.join(base_dir, 'travel_bot.db')
+CONFIG_PATH = os.path.join(base_dir, 'config.json')
+
+# Загрузка конфигурационных данных из файла
+with open(CONFIG_PATH, "r") as config_file:
+    config_data = json.load(config_file)
 
 # Установите токен вашего бота
-TOKEN = '12'
-HOTEL_LINK = 'https://tp.st/TZA2MJW4'
-AIRPLANE_LINK = 'https://aviasales.tp.st/C9qeS4te'
-TOUR_LINK = 'https://travelata.tp.st/3U2N1QA4'
+TOKEN = config_data['telegram_bot_tolen']
+HOTEL_LINK = config_data['hotel_partner_link']
+AIRPLANE_LINK = config_data['airplane_partner_link']
+TOUR_LINK = config_data['tour_partner_link']
 
 # Создайте объект бота
 bot = telebot.TeleBot(TOKEN)
