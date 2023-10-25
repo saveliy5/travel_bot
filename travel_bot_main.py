@@ -120,9 +120,12 @@ def start(message):
     item3 = types.KeyboardButton("Казань")
     item4 = types.KeyboardButton("Калининград")
     item5 = types.KeyboardButton("Сочи")
-    item6 = types.KeyboardButton("Владивосток")
-    item7 = types.KeyboardButton("Другой")
-    markup.add(item1, item2, item3, item4, item5, item6, item7)
+    item6 = types.KeyboardButton("Екатеринбург")
+    item7 = types.KeyboardButton("Владивосток")
+    item8 = types.KeyboardButton("Нижний Новгород")
+    item9 = types.KeyboardButton("Ярославль")
+    item10 = types.KeyboardButton("Другой")
+    markup.add(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10)
 
     bot.send_message(message.chat.id, "Выберите город из списка кнопок или отправьте 'Другой', чтобы ввести город вручную.", reply_markup=markup)
 
@@ -146,13 +149,12 @@ def handle_days_selection(message):
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
-    cursor.execute('SELECT info FROM cities_info WHERE city=?', (need_city,))
+    cursor.execute('SELECT info FROM cities_info WHERE city=? AND num_days=? ORDER BY RANDOM() LIMIT 1', (need_city, need_count_days))
     info = cursor.fetchone()
 
     conn.close()
 
     need_message = info[0]
-    need_message += f'\n\n Количество дней {need_count_days}'
     need_message += '\n\n\U0001F3E8 ' + f'[БРОНИРУЙТЕ ОТЕЛИ ВЫГОДНО ТУТ]({HOTEL_LINK})'
     need_message += '\n\U00002708 ' + f'[ДЕШЕВЫЕ АВИАБИЛЕТЫ ТУТ]({AIRPLANE_LINK})'
     need_message += '\n\U0001F9F3 ' + f'[СРАЗУ ТУР]({TOUR_LINK})'
