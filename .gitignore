@@ -4,4 +4,7 @@ config.json
 **.db
 database.py
 chatgpt.py
+chatgpt_v2.py
+database_2.py
+qwe.py
 check_excel.py
