@@ -41,7 +41,7 @@ def normalize_city(city):
     # Заменяем "питер" на "Санкт-Петербург"
     if city in ["питер", "санкт петербург", "санкт питербург"]:
         return "Санкт-Петербург"
-    city = city.capitalize()
+    city = city.title()
     return city
 
 
